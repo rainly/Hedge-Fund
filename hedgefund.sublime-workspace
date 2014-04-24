@@ -1,0 +1,538 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"start",
+				"startnew"
+			],
+			[
+				"tra",
+				"trade_item"
+			],
+			[
+				"fin",
+				"find_all"
+			],
+			[
+				"roo",
+				"root_user_url"
+			],
+			[
+				"sho",
+				"show_note"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"con",
+				"config"
+			],
+			[
+				"exce",
+				"except"
+			],
+			[
+				"a",
+				"author"
+			],
+			[
+				"c",
+				"color"
+			],
+			[
+				"g",
+				"gmin"
+			],
+			[
+				"rm",
+				"rmin  (variable)"
+			],
+			[
+				"ran",
+				"randomrgba"
+			],
+			[
+				"padding",
+				"padding-bottom:   (property)"
+			],
+			[
+				"padd",
+				"padding-left"
+			],
+			[
+				"is_",
+				"is_unread"
+			],
+			[
+				"ge",
+				"get_popular_tags"
+			],
+			[
+				"u",
+				"ul	Tag"
+			],
+			[
+				"gues",
+				"guest_book"
+			],
+			[
+				"comment",
+				"comment_list"
+			],
+			[
+				"com",
+				"comments"
+			],
+			[
+				"is",
+				"is_guest_book"
+			],
+			[
+				"get",
+				"get_post_by_comment"
+			],
+			[
+				"un",
+				"count_unread_message"
+			],
+			[
+				"ad",
+				"admin_required"
+			],
+			[
+				"def",
+				"default"
+			],
+			[
+				"U",
+				"uuid1  (function)"
+			],
+			[
+				"image",
+				"image_data"
+			],
+			[
+				"key",
+				"keywords"
+			],
+			[
+				"get_po",
+				"get_posts_by_id"
+			],
+			[
+				"cu",
+				"cut_content"
+			],
+			[
+				"abou",
+				"about_post"
+			],
+			[
+				"inde",
+				"index_post"
+			],
+			[
+				"page_count",
+				"page_count"
+			],
+			[
+				"cl",
+				"click  (function)"
+			],
+			[
+				"rep",
+				"reply_to_user"
+			],
+			[
+				"edit",
+				"edit_about"
+			],
+			[
+				"json",
+				"jsonify  (variable)"
+			],
+			[
+				"ja",
+				"jsonify  (variable)"
+			],
+			[
+				"tit",
+				"title_element"
+			],
+			[
+				"cont",
+				"conent"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 110.0,
+		"selected_items":
+		[
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"soda",
+				"Preferences: Package Control Settings – Default"
+			]
+		],
+		"width": 386.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/E/Crawl-Test/x",
+		"/E/Web_Crawl/backup.py",
+		"/E/Web_Crawl/crawl",
+		"/E/My-Blog/coolshinesmart/application/static/js/tagcloud.js",
+		"/E/My-Blog/coolshinesmart/application/static/css/fireworks.css",
+		"/E/My-Blog/coolshinesmart/application/static/js/fireworks.js",
+		"/E/My-Blog/coolshinesmart/application/templates/macro.html",
+		"/E/My-Blog/coolshinesmart/application/router.py",
+		"/E/My-Blog/coolshinesmart/application/models.py",
+		"/E/My-Blog/coolshinesmart/application/__init__.py",
+		"/E/My-Blog/coolshinesmart/application/config.py",
+		"/E/My-Blog/coolshinesmart/application/templates/happy_birthday.html",
+		"/E/My-Blog/coolshinesmart/application/static/js/upload.js",
+		"/E/My-Blog/coolshinesmart/application/static/js/page.js",
+		"/E/My-Blog/coolshinesmart/application/static/js/reply.js",
+		"/E/My-Blog/coolshinesmart/app.yaml",
+		"/E/My-Blog/coolshinesmart/application/decorators.py",
+		"/E/My-Blog/coolshinesmart/application/templates/guest_book.html",
+		"/E/My-Blog/coolshinesmart/application/templates/image_browser.html",
+		"/E/My-Blog/coolshinesmart/application/static/js/pick-more.js",
+		"/E/My-Blog/coolshinesmart/application/templates/post.html",
+		"/E/My-Blog/coolshinesmart/application/static/js/waypoints.js",
+		"/E/My-Blog/coolshinesmart/application/templates/edit_photos.html",
+		"/E/My-Blog/coolshinesmart/application/templates/photos.html",
+		"/E/My-Blog/coolshinesmart/application/templates/base.html",
+		"/E/My-Blog/coolshinesmart/application/static/css/bootstrap-theme.css",
+		"/E/My-Blog/coolshinesmart/application/static/css/base-theme.css",
+		"/E/My-Blog/coolshinesmart/application/static/css/bootstrap.css",
+		"/E/My-Blog/coolshinesmart/application/templates/components/sidebar.html",
+		"/E/My-Blog/coolshinesmart/application/filters.py",
+		"/E/My-Blog/coolshinesmart/application/templates/index.html",
+		"/E/My-Blog/coolshinesmart/application/templates/components/postlist.html",
+		"/E/My-Blog/coolshinesmart/application/templates/components/masthead.html",
+		"/E/My-Blog/README.md",
+		"/E/My-Blog/coolshinesmart/application/templates/edit_post.html",
+		"/E/My-Blog/coolshinesmart/application/templates/edit.html",
+		"/E/My-Blog/coolshinesmart/application/templates/search.html",
+		"/E/My-Blog/coolshinesmart/application/templates/tag_posts.html",
+		"/E/My-Blog/coolshinesmart/run.py",
+		"/E/My-Blog/coolshinesmart/application/templates/components/navi.html",
+		"/E/My-Blog/coolshinesmart/application/templates/new_post.html",
+		"/E/My-Blog/coolshinesmart/application/templates/posts.html",
+		"/E/My-Blog/coolshinesmart/index.yaml",
+		"/E/My-Blog/coolshinesmart/application/templates/unread_messages.html",
+		"/E/My-Blog/coolshinesmart/application/templates/redirect.html",
+		"/E/My-Blog/coolshinesmart/application/static/js/infinite-scroll.js",
+		"/E/My-Blog/coolshinesmart/application/static/image-picker/image-picker.css",
+		"/E/My-Blog/coolshinesmart/application/templates/upload_image.html",
+		"/E/My-Blog/coolshinesmart/application/templates/components/messages.html",
+		"/E/My-Blog/coolshinesmart/application/templates/about.html",
+		"/E/My-Blog/coolshinesmart/application/templates/change_password.html",
+		"/E/My-Blog/coolshinesmart/application/static/js/password.js",
+		"/E/My-Blog/coolshinesmart/application/templates/sign_in.html",
+		"/E/My-Blog/coolshinesmart/application/static/js/search-more.js",
+		"/E/My-Blog/coolshinesmart/application/filter.py",
+		"/E/My-Blog/coolshinesmart/application/jinja_template.py",
+		"/E/My-Blog/coolshinesmart/application/utility.py",
+		"/E/My-Blog/coolshinesmart/application/templates/signin.html",
+		"/E/My-Blog/coolshinesmart/application/static/image-picker/image-picker.js",
+		"/E/My-Blog/coolshinesmart/application/static/js/jquery.fancybox.js",
+		"/E/My-Blog/coolshinesmart/application/static/js/photo-wall.js",
+		"/E/My-Blog/coolshinesmart/application/static/js/readmore.js",
+		"/E/My-Blog/coolshinesmart/application/static/yoxview/jquery.yoxview-2.21.min.js",
+		"/E/My-Blog/coolshinesmart/application/static/yoxview/jquery.yoxview-2.21.js",
+		"/E/My-Blog/coolshinesmart/application/static/yoxview/yoxview-init.js",
+		"/E/My-Blog/coolshinesmart/application/static/js/jquery.validate.js",
+		"/E/My-Blog/coolshinesmart/application/templates/upload_avatar.html",
+		"/E/My-Blog/coolshinesmart/application/static/ckeditor/config.js",
+		"/E/My-Blog/coolshinesmart/application/static/ckeditor/ckeditor.js",
+		"/E/My-Blog/coolshinesmart/application/static/ckeditor/lang/zh-cn.js",
+		"/E/My-Blog/coolshinesmart/application/static/ckeditor/plugins/image/dialogs/image.js",
+		"/E/My-Blog/coolshinesmart/application/templates/components/search.html",
+		"/E/My-Blog/coolshinesmart/application/templates/components/comment.html",
+		"/E/My-Blog/coolshinesmart/application/templates/components/footer.html",
+		"/E/My-Blog/coolshinesmart/application/static/js/spin.js",
+		"/E/My-Blog/coolshinesmart/application/static/js/post-infinite-scroll.js",
+		"/E/My-Blog/coolshinesmart/application/static/js/message-infinite-scroll.js",
+		"/E/My-Blog/coolshinesmart/application/static/js/bootstrap.js",
+		"/E/My-Blog/coolshinesmart/application/router.py.orig",
+		"/E/My-Blog/coolshinesmart/application/static/js/infinite-scroll.js.orig",
+		"/E/My-Blog/coolshinesmart/application/static/js/infinite-scroll.js.REMOTE.3832.js",
+		"/E/My-Blog/coolshinesmart/application/templates/partial/about_partial.html",
+		"/E/My-Blog/coolshinesmart/application/templates/partial/index_partial.html",
+		"/E/My-Blog/coolshinesmart/favicon.ico",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 2/Packages/SublimeCodeIntel/SublimeCodeIntel.sublime-settings",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 2/Packages/SideBarEnhancements/messages/11.13.2012.1305.0.txt",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 2/Packages/Package Control/Package Control.sublime-settings",
+		"/C/Users/Administrator/Desktop/tmp",
+		"/C/Users/Administrator/Desktop/Sound Localizer/src/com/laurentcalmes/soundloc/AudioDevice.java"
+	],
+	"find":
+	{
+		"height": 36.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"",
+			"浏览服务器",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"parseJSON",
+			"json",
+			"parseJSON",
+			"in",
+			"t",
+			" []",
+			"None",
+			"not None",
+			"deadline_text",
+			"atom",
+			"ok",
+			"blog-logo-content",
+			"randomrgb",
+			"rgba",
+			"rgb",
+			"rgba",
+			"rgb",
+			"randomrgb",
+			"rgba",
+			"myN",
+			"myNewSrc",
+			"gameloop",
+			"if (firecount == 0)",
+			"allBlocks",
+			"gameloop",
+			"app.config",
+			"send_reply_reminder",
+			"author",
+			"send_to",
+			"recipient",
+			"reply_author",
+			"get_comment_or_message_info",
+			"ajax",
+			"try",
+			"get_comment_or_message_info",
+			"add_message",
+			"reply_to_id",
+			"reply_to_content",
+			"detailed",
+			"fireworks",
+			"updateDisplay",
+			"displayFirework",
+			"target_color",
+			"this.canvasheight",
+			"target_color",
+			"G_vmlCanvasManager",
+			"ctx",
+			"target_color",
+			"type",
+			"pull-right",
+			"pull-",
+			"rgb",
+			"exploded",
+			"rgba",
+			"new Firework",
+			"Firework",
+			"allBlocks",
+			"randomrgba",
+			"text",
+			"allBlocks",
+			"FIREWORK_EXPLODED",
+			"displayFirework",
+			"launchText",
+			"FONT_FIREWORK",
+			"FIREWORK_FRAGMENT",
+			"displayFirework",
+			"explodeFirework",
+			"fireworks",
+			"displayFirework",
+			"explodeFirework",
+			"disperseFirework",
+			"addFireworks",
+			"is_about",
+			"font",
+			"last-child",
+			"input_gender",
+			"get_comment_or_message_info",
+			"update_comments",
+			"comments",
+			"add_comment",
+			"left",
+			"if",
+			"additional",
+			"comment",
+			"author",
+			"return red",
+			"return re",
+			"tag",
+			"edit",
+			"recent",
+			"edit_photo",
+			"comment_list",
+			"guest_bool",
+			"guest",
+			"comment_list",
+			"guest",
+			"make_response",
+			"guest_book",
+			"search",
+			")\n",
+			"ajax/more_c",
+			"detailed",
+			"guest",
+			"-1",
+			"logging",
+			"unread_list",
+			"get_post_by_comment",
+			"remove_tags",
+			"index",
+			"get_posts_by_id",
+			"search",
+			"tag",
+			"tag_",
+			"photos",
+			"if g",
+			"image_l",
+			"image_",
+			"get_posts",
+			"posts",
+			"upload",
+			"get_post_info",
+			"make_response",
+			">\n",
+			"else",
+			"flash",
+			"redirect",
+			"login_required",
+			" \""
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"form-group"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 102.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 222.0,
+	"status_bar_visible": true
+}
