@@ -145,7 +145,7 @@ def generate_csv(odered_date_stocks_dict, company_list, period):
     for stock_name in stock_dict.keys():
         stock_dict[stock_name]['stock_code'] = stock_name
         stock_list.append(stock_dict[stock_name])
-    filename = period['name'] + '.csv'
+    filename = './trend_rank/' + period['name'] + '.csv'
     f = open(filename, 'wb')
     f.write(u'\ufeff'.encode('utf8'))
     dict_writer = csv.DictWriter(f, field_list)
@@ -169,7 +169,7 @@ def get_trend_spread(odered_date_stocks_dict, company_list, period, days):
 
 def generate_trend_diff_csv(trend_diff_list, period, days):
     field_list = ['date', 'trend_diff']
-    filename = period['name'] + '_diff_'+ str(days) + '.csv'
+    filename = './trend_diff/'+period['name'] + '_diff_'+ str(days) + '.csv'
     f = open(filename, 'wb')
     f.write(u'\ufeff'.encode('utf8'))
     dict_writer = csv.DictWriter(f, field_list)
