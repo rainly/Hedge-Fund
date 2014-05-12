@@ -95,12 +95,11 @@ def get_trend_rank(trend_list):
     return rank_list
 
 
-def get_accumulate_trend_rank(current_price_list, previous_price_list, days):
+def get_accumulate_trend_rank(current_price_dict, previous_price_dict, days):
     accumulate_trend_list = []
-    for i in xrange(len(current_price_list)):
-        trend = (current_price_list[i]['price'] - previous_price_list[
-                 i]['price']) / previous_price_list[i]['price']
-        accumulate_trend_list.append({'name': current_price_list[i]['name'],
+    for k in current_price_dict.keys():
+        trend = (current_price_dict[k] - previous_price_dict[k]) / previous_price_dict[k]
+        accumulate_trend_list.append({'name': k,
                                       'trend': trend})
     return sorted(accumulate_trend_list, cmp=trend_compare)
 
@@ -113,11 +112,12 @@ def get_period_stocks_info(period, company_list):
         for single_date in trend_dict.keys():
             if not date_stocks_dict.has_key(single_date):
                 date_stocks_dict[single_date] = {}
-                date_stocks_dict[single_date]['price'] = []
+                date_stocks_dict[single_date]['price'] = {}
                 date_stocks_dict[single_date]['trend'] = []
-                date_stocks_dict[single_date]['trend_diff'] = {}
-            date_stocks_dict[single_date]['price'].append(
-                {'name': company, 'price': price_dict[single_date]})
+                #date_stocks_dict[single_date]['trend_spread'] = {}
+            #date_stocks_dict[single_date]['price'].append(
+            #    {'name': company, 'price': price_dict[single_date]})
+            date_stocks_dict[single_date]['price'][company] = price_dict[single_date]
             date_stocks_dict[single_date]['trend'].append(
                 {'name': company, 'trend': trend_dict[single_date]})
     odered_date_stocks_dict = collections.OrderedDict(
@@ -154,27 +154,41 @@ def generate_csv(odered_date_stocks_dict, company_list, period):
 
 
 def get_trend_spread(odered_date_stocks_dict, company_list, period, days):
+    high_count ,low_count = 0, 0
     date_stocks_list = odered_date_stocks_dict.items()
     list_length = len(date_stocks_list)
-    trend_diff_list = []
+    trend_spread_list = []
     for i in xrange(len(date_stocks_list)):
-        if (i - days + 1) > 0:
+        if (i - days + 1) > 0 and i+1 < len(date_stocks_list):
             trend_list = get_accumulate_trend_rank(
                 date_stocks_list[i][1]['price'],
                 date_stocks_list[i - days + 1][1]['price'], days)
-            trend_diff_list.append({'date': date_stocks_list[i][0].isoformat(),
-                                    'trend_diff': (trend_list[0]['trend'] - trend_list[-1]['trend']) * 100})
-    generate_trend_diff_csv(trend_diff_list, period, days)
+            trend_spread_list.append({'date': date_stocks_list[i][0].isoformat(),
+                                    'trend_spread': (trend_list[0]['trend'] - trend_list[-1]['trend']) * 100,
+                                    'high':trend_list[0]['name'],
+                                    'high_today': date_stocks_list[i][1]['price'][trend_list[0]['name']],
+                                    'high_after': date_stocks_list[i+1][1]['price'][trend_list[0]['name']],
+                                    'low':trend_list[-1]['name'],
+                                    'low_today': date_stocks_list[i][1]['price'][trend_list[-1]['name']],
+                                    'low_after': date_stocks_list[i+1][1]['price'][trend_list[-1]['name']]})
+            if date_stocks_list[i][1]['price'][trend_list[0]['name']] >\
+            date_stocks_list[i+1][1]['price'][trend_list[0]['name']]:
+                high_count+=1
+            if date_stocks_list[i][1]['price'][trend_list[-1]['name']] <\
+            date_stocks_list[i+1][1]['price'][trend_list[-1]['name']]:
+                low_count+=1
+    print 'days : ' + str(days)+ ' high_count : ' + str(high_count) + ' low_count : ' + str(low_count)
+    generate_trend_spread_csv(trend_spread_list, period, days)
 
 
-def generate_trend_diff_csv(trend_diff_list, period, days):
-    field_list = ['date', 'trend_diff']
-    filename = './trend_diff/'+period['name'] + '_diff_'+ str(days) + '.csv'
+def generate_trend_spread_csv(trend_spread_list, period, days):
+    field_list = ['date', 'trend_spread','high','high_today','high_after','low','low_today','low_after']
+    filename = './trend_spread/'+period['name'] + '_spread_'+ str(days) + '.csv'
     f = open(filename, 'wb')
     f.write(u'\ufeff'.encode('utf8'))
     dict_writer = csv.DictWriter(f, field_list)
     dict_writer.writer.writerow(field_list)
-    dict_writer.writerows(trend_diff_list)
+    dict_writer.writerows(trend_spread_list)
 
 
 def main():
@@ -188,7 +202,8 @@ def main():
     company_list = get_company_list(period1)
     odered_date_stocks_dict = get_period_stocks_info(period1, company_list)
     generate_csv(odered_date_stocks_dict, company_list, period1)
-    get_trend_spread(odered_date_stocks_dict, company_list, period1, 4)
+    for day in xrange(2,10):
+        get_trend_spread(odered_date_stocks_dict, company_list, period1, day)
     print "finished!"
     #date_stocks_list = odered_date_stocks_dict.items()
     # for i in xrange(len(date_stocks_list)):
