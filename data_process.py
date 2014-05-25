@@ -10,6 +10,9 @@ from pprint import pprint
 import csv
 from stock import *
 import collections
+from sklearn import cross_validation,metrics,svm
+from numpy import array
+from sklearn.ensemble import RandomForestRegressor
 
 node1 = date(2013, 9, 20)
 node2 = date(2012, 9, 24)
@@ -154,7 +157,7 @@ def generate_csv(odered_date_stocks_dict, company_list, period):
 
 
 def get_trend_spread(odered_date_stocks_dict, company_list, period, days):
-    high_count ,low_count = 0, 0
+    high_count ,low_count, spread_after_count, spread_after_acc = 0, 0, 0, 0.0
     date_stocks_list = odered_date_stocks_dict.items()
     list_length = len(date_stocks_list)
     trend_spread_list = []
@@ -163,26 +166,38 @@ def get_trend_spread(odered_date_stocks_dict, company_list, period, days):
             trend_list = get_accumulate_trend_rank(
                 date_stocks_list[i][1]['price'],
                 date_stocks_list[i - days + 1][1]['price'], days)
+            high_today = date_stocks_list[i][1]['price'][trend_list[0]['name']]
+            high_after = date_stocks_list[i+1][1]['price'][trend_list[0]['name']]
+            low_today = date_stocks_list[i][1]['price'][trend_list[-1]['name']]
+            low_after = date_stocks_list[i+1][1]['price'][trend_list[-1]['name']]
+            high_trend = (high_after - high_today)/high_today*100
+            low_trend = (low_after-low_today)/low_today*100
             trend_spread_list.append({'date': date_stocks_list[i][0].isoformat(),
                                     'trend_spread': (trend_list[0]['trend'] - trend_list[-1]['trend']) * 100,
                                     'high':trend_list[0]['name'],
-                                    'high_today': date_stocks_list[i][1]['price'][trend_list[0]['name']],
-                                    'high_after': date_stocks_list[i+1][1]['price'][trend_list[0]['name']],
+                                    'high_today': high_today,
+                                    'high_after': high_after,
+                                    'high_trend': high_trend,
                                     'low':trend_list[-1]['name'],
-                                    'low_today': date_stocks_list[i][1]['price'][trend_list[-1]['name']],
-                                    'low_after': date_stocks_list[i+1][1]['price'][trend_list[-1]['name']]})
-            if date_stocks_list[i][1]['price'][trend_list[0]['name']] >\
-            date_stocks_list[i+1][1]['price'][trend_list[0]['name']]:
-                high_count+=1
-            if date_stocks_list[i][1]['price'][trend_list[-1]['name']] <\
-            date_stocks_list[i+1][1]['price'][trend_list[-1]['name']]:
-                low_count+=1
-    print 'days : ' + str(days)+ ' high_count : ' + str(high_count) + ' low_count : ' + str(low_count)
+                                    'low_today': low_today,
+                                    'low_after': low_after,
+                                    'low_trend': low_trend,
+                                    'spread_after': low_trend - high_trend})
+            if high_today > high_after:
+                high_count += 1
+            if low_today < low_after:
+                low_count += 1
+            if low_trend - high_trend > 0:
+                spread_after_count += 1
+            spread_after_acc += low_trend - high_trend
+    print 'days : ' + str(days)+ ' high_count : ' + str(high_count) + ' low_count : ' + str(low_count) + \
+    ' spread_after_count : ' + str(spread_after_count)+' spread_after_acc : ' + str(spread_after_acc/len(date_stocks_list))
     generate_trend_spread_csv(trend_spread_list, period, days)
 
 
 def generate_trend_spread_csv(trend_spread_list, period, days):
-    field_list = ['date', 'trend_spread','high','high_today','high_after','low','low_today','low_after']
+    field_list = ['date', 'trend_spread','high','high_today','high_after','high_trend',
+    'low','low_today','low_after','low_trend','spread_after']
     filename = './trend_spread/'+period['name'] + '_spread_'+ str(days) + '.csv'
     f = open(filename, 'wb')
     f.write(u'\ufeff'.encode('utf8'))
@@ -190,6 +205,8 @@ def generate_trend_spread_csv(trend_spread_list, period, days):
     dict_writer.writer.writerow(field_list)
     dict_writer.writerows(trend_spread_list)
 
+def genetate_feature():
+    pass
 
 def main():
     # get_company_list(period1)
