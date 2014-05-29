@@ -16,7 +16,7 @@ from sklearn.ensemble import RandomForestRegressor,RandomForestClassifier
 
 
 
-node0 = date(2014, 4, 20)
+node0 = date(2014, 3, 20)
 node1 = date(2013, 9, 20)
 node2 = date(2012, 9, 24)
 
@@ -210,7 +210,7 @@ def generate_trend_spread_csv(trend_spread_list, period, days):
     dict_writer.writer.writerow(field_list)
     dict_writer.writerows(trend_spread_list)
 
-def genetate_feature(odered_date_stocks_dict, company_list, period):
+def genetate_feature(odered_date_stocks_dict, company_list, period,is_for_eval):
     feature_list = []
     target_list = []
     stock_dict = {}
@@ -224,22 +224,39 @@ def genetate_feature(odered_date_stocks_dict, company_list, period):
         rank_list = stock_dict[stock_name]
         for i in xrange(len(rank_list)):
             if i>3 :
-                avg = (rank_list[i-4]+rank_list[i-3]+rank_list[i-2]+rank_list[i-1])/4.0
-                #if avg>22 or avg<8:
-                feature_list.append([rank_list[i-4],rank_list[i-3],rank_list[i-2],rank_list[i-1]]) 
-                target_list.append(rank_list[i])
-                count+=1
+                if is_for_eval:
+                    avg = (rank_list[i-4]+rank_list[i-3]+rank_list[i-2]+rank_list[i-1])/4.0
+                    if (avg>22 or avg<8):
+                        feature_list.append([int(rank_list[i-4]/5),int(rank_list[i-3]/5),
+                            int(rank_list[i-2]/5),int(rank_list[i-1]/5)]) 
+                        target_list.append(rank_list[i])
+                        count+=1
+                else:
+                    feature_list.append([int(rank_list[i-4]/5),int(rank_list[i-3]/5),
+                            int(rank_list[i-2]/5),int(rank_list[i-1]/5)]) 
+                    target_list.append(rank_list[i])
+                    count+=1
     print count
     return feature_list,target_list
 
+
 def buildForest(feature_list, target_list):
-    rf = RandomForestClassifier(n_estimators=50)
+    rf = RandomForestRegressor(n_estimators=50)
     clf= rf.fit(feature_list, target_list)
     return rf,clf
 
 def eval_forest(rf, feature_list, target_list):
     scores=cross_validation.cross_val_score(rf,asarray(feature_list),asarray(target_list),score_func=metrics.mean_squared_error)
     print sqrt(scores)
+
+def evaluate(clf,feature_list,target_list):
+    sum = 0.0
+    for i in xrange(len(feature_list)):
+        rank = round(clf.predict(feature_list[i])[0])
+        print(feature_list[i])
+        print (str(target_list[i])+" "+str(rank))
+        sum+=(rank - target_list[i])**2
+    print sqrt(sum/float(len(target_list)))
 
 def get_avg_RMSE(clf,odered_date_stocks_dict):
     pass
@@ -256,15 +273,19 @@ def main():
     p1_ordered_date_stocks_dict = get_period_stocks_info(period1, p1_company_list)
     p2_company_list = get_company_list(period2)
     p2_ordered_date_stocks_dict = get_period_stocks_info(period2, p2_company_list)
+    p0_ordered_date_stocks_dict = get_period_stocks_info(period0, p1_company_list)
     #generate_csv(p1_ordered_date_stocks_dict, p1_company_list, period1)
     #for day in xrange(2,10):
     #    get_trend_spread(p1_ordered_date_stocks_dict, p1_company_list, period1, day)
-    p1_feature_list,p1_target_list = genetate_feature(p1_ordered_date_stocks_dict, p1_company_list, period1)
-    p2_feature_list,p2_target_list = genetate_feature(p2_ordered_date_stocks_dict, p2_company_list, period2)
+    p1_feature_list,p1_target_list = genetate_feature(p1_ordered_date_stocks_dict, p1_company_list, period1, False)
+    p2_feature_list,p2_target_list = genetate_feature(p2_ordered_date_stocks_dict, p2_company_list, period2, False)
+    p0_feature_list,p0_target_list = genetate_feature(p0_ordered_date_stocks_dict, p1_company_list, period0, True)
+
     feature_list = p1_feature_list + p2_feature_list
     target_list = p1_target_list + p2_target_list
     rf,clf = buildForest(feature_list, target_list)
     eval_forest(rf, feature_list, target_list)
+    evaluate(clf,p0_feature_list,p0_target_list)
     print "finished!"
     #date_stocks_list = odered_date_stocks_dict.items()
     # for i in xrange(len(date_stocks_list)):
@@ -272,7 +293,7 @@ def main():
     
     #download_period_stocks_charts(period0,get_company_list(period1))
     #download_period_stocks_charts(period1,get_company_list(period1))
-    #sdownload_period_stocks_charts(period2,get_company_list(period2))
+    #download_period_stocks_charts(period2,get_company_list(period2))
     
 if __name__ == "__main__":
     main()
